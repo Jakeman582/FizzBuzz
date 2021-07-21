@@ -1,8 +1,21 @@
 #include <iostream>
+#include <cstdlib> // std::atoi(const char*)
 
-int main()
+int main(int argc, char** argv)
 {
-	int number = 100;
+	// Make sure enough parameters have been supplied
+	if(argc != 2)
+	{
+		std::cerr << "Usage: FizzBuzz number" << std::endl;
+		return 1;
+	}
+
+	int number = std::atoi(argv[1]);
+	if(number < 1)
+	{
+		std::cerr << "Error: input number must be integer >= 1" << std::endl;
+		return 2;
+	}
 
 	for(int index = 1; index <= number; index++)
 	{
