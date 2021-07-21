@@ -1,5 +1,5 @@
-#include <iostream>
-#include <cstdlib> // std::atoi(const char*)
+#include <iostream>	// cin, cout, cerr
+#include <cstdlib>	// std::atoi(const char*)
 
 int main(int argc, char** argv)
 {
@@ -10,6 +10,7 @@ int main(int argc, char** argv)
 		return 1;
 	}
 
+	// Make sure the input is large enough to produce results.
 	int number = std::atoi(argv[1]);
 	if(number < 1)
 	{
@@ -17,6 +18,7 @@ int main(int argc, char** argv)
 		return 2;
 	}
 
+	// Process and output the strings
 	for(int index = 1; index <= number; index++)
 	{
 		if(index % 3 == 0 && index % 5 == 0)
