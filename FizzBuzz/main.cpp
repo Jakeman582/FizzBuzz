@@ -1,5 +1,17 @@
 #include <iostream>	// cin, cout, cerr
+#include <sstream> // stringstreams
 #include <cstdlib>	// std::atoi(const char*)
+
+std::string getFizzBuzzString(int number)
+{
+	std::string fizzBuzzString = "";
+	if(number % 3 == 0) fizzBuzzString += "Fizz";
+	if(number % 5 == 0) fizzBuzzString += "Buzz";
+
+	if(fizzBuzzString == "") fizzBuzzString += std::to_string(number);
+
+	return fizzBuzzString;
+}
 
 int main(int argc, char** argv)
 {
@@ -19,25 +31,13 @@ int main(int argc, char** argv)
 	}
 
 	// Process and output the strings
+	std::ostringstream fizzBuzzString;
 	for(int index = 1; index <= number; index++)
 	{
-		if(index % 3 == 0 && index % 5 == 0)
-		{
-			std::cout << "FizzBuzz" << std::endl;
-		}
-		else if(index % 3 == 0)
-		{
-			std::cout << "Fizz" << std::endl;
-		}
-		else if(index % 5 == 0)
-		{
-			std::cout << "Buzz" << std::endl;
-		}
-		else
-		{
-			std::cout << index << std::endl;
-		}
+		fizzBuzzString << getFizzBuzzString(index) << std::endl;
 	}
+
+	std::cout << fizzBuzzString.str();
 
 	return 0;
 }
