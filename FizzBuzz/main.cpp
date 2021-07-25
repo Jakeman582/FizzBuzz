@@ -1,5 +1,6 @@
 #include <iostream>	// cin, cout, cerr
 #include <sstream> // stringstreams
+#include <fstream> // ifstreams
 #include <cstdlib>	// std::atoi(const char*)
 #include <map>
 
@@ -40,20 +41,27 @@ int main(int argc, char** argv)
 		return 2;
 	}
 
+	// We can associate certain numbers with strings in a file, and read those file
+	// contents into our map
+	std::ifstream fizzBuzzFile("FizzBuzzMapping.txt");
+	if(fizzBuzzFile.fail())
+	{
+		std::cerr << "Unable to open file \"FizzBuzzMapping.txt\"" << std::endl;
+		return 3;
+	}
+
 	// Construct a mapping from integers to strings
 	// Map is ordered, so we can add integer-string pairs in any order, and they'll 
 	// be compared in numerical order (if order is not important, use 
 	// std::unordered_map<int, std::string>)
 	std::map<int, std::string> fizzBuzzMap;
-	fizzBuzzMap[3] = "Fizz";
-	fizzBuzzMap[5] = "Buzz";
-
-	// We can easily create new entries without having to add multiple if/else branches in
-	// code, which is a very nice maintenance feature
-	// New categories are included here
-	fizzBuzzMap[7] = "Zazz";
-	fizzBuzzMap[13] = "Puzz";
-	fizzBuzzMap[11] = "Dazz";
+	int mapNumber;
+	std::string mapString;
+	while(!fizzBuzzFile.eof())
+	{
+		fizzBuzzFile >> mapNumber >> mapString;
+		fizzBuzzMap[mapNumber] = mapString;
+	}
 
 	// Process and output the strings
 	std::ostringstream fizzBuzzString;
