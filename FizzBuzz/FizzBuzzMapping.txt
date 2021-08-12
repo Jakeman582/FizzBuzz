@@ -1,4 +1,5 @@
 3	Fizz
-19	Buzz
-29	Dazz
-37	Puzz
+5	Buzz
+13	Tizz
+11	Dazz
+7	Pezz

@@ -66,7 +66,7 @@ void FizzBuzz::process(int number)
 	// need to process numbers already in the list
 	for(index = totalNumbersProcessed; index < number; index++)
 	{
-		fizzBuzzVector.push_back(getFizzBuzzString(index));
+		fizzBuzzVector.push_back(getFizzBuzzString(index + 1));
 	}
 	totalNumbersProcessed = index;
 }
@@ -85,7 +85,7 @@ void FizzBuzz::append(int number)
 void FizzBuzz::reset()
 {
 	index = 0;
-	totalNumbersProcessed;
+	totalNumbersProcessed = 0;
 	fizzBuzzVector.clear();
 }
 
@@ -98,6 +98,7 @@ bool FizzBuzz::reset(int location)
 		fizzBuzzVector.begin() + location, 
 		fizzBuzzVector.end()
 	);
+	return true;
 }
 
 bool FizzBuzz::reindex(int location)
@@ -110,6 +111,10 @@ bool FizzBuzz::reindex(int location)
 std::string FizzBuzz::toString() const
 {
 	std::ostringstream workingString;
-	for(std::string current : fizzBuzzVector) workingString << current << std::endl;
+	workingString.clear();
+	for(int current = 0; current < index; current++)
+	{
+		workingString << fizzBuzzVector[current] << std::endl;
+	}
 	return workingString.str();
 }

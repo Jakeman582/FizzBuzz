@@ -19,7 +19,7 @@ private:
 	std::vector<std::string> fizzBuzzVector;	// The vector of strings
 	std::map<int, std::string> fizzBuzzMap;	// The mapping from int to string
 	int totalNumbersProcessed;	// The maximum processed integer number
-	int index;	// The location immediately after the largest processed number
+	int index;	// The current number of processed numbers
 
 	/* Function members */
 	std::string getFizzBuzzString(int number);	// Get the string associated 
